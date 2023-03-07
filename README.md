@@ -2,8 +2,8 @@
 
 This project is a weather app with the posibility to search cities.
 
-image.png
 
+![Alt text](src/assets/Weather%20app.png)
 
 ## Built With
 

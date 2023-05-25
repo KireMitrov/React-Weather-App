@@ -13,7 +13,6 @@ function Main() {
     
     
     useEffect(() => {
-        console.log(process.env.REACT_APP_API_KEY)
         
         navigator.geolocation.getCurrentPosition(function(position) {
             setLat(position.coords.latitude);
@@ -24,9 +23,11 @@ function Main() {
         fetch (apiCurrent)
         .then ( resp => resp.json())
         .then ( data => {setData(data)})
-
+        console.log(data)
+        
     }, [])
     
+
     const searchLocation = () => {
         const apiBySearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.REACT_APP_API_KEY}&units=metric`
         axios.get(apiBySearch).then((response) => {

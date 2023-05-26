@@ -18,15 +18,18 @@ function Main() {
             setLat(position.coords.latitude);
             setLong(position.coords.longitude);
         })
-        
-        const apiCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-        fetch (apiCurrent)
-        .then ( resp => resp.json())
-        .then ( data => {setData(data)})
-        console.log(data)
+        console.log(long)
         
     }, [])
     
+
+    useEffect(() => {
+        const apiCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+        axios.get(apiCurrent).then((response) => {
+            setData(response.data)
+        })
+        
+    },[long, lat])
 
     const searchLocation = () => {
         const apiBySearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.REACT_APP_API_KEY}&units=metric`
